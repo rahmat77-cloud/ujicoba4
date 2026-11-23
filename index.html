@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modul Ajar PAI - Pembelajaran Mendalam</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Amiri (untuk teks Arab jika diperlukan) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            arabic: ['"Amiri"', 'serif'],
+          },
+          colors: {
+            emerald: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Pengaturan khusus untuk mode cetak / ekspor PDF */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-container {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      table {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:"Plus Jakarta Sans", sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.sticky{position:sticky}.bottom-5{bottom:1.25rem}.right-5{right:1.25rem}.top-0{top:0px}.z-40{z-index:40}.z-50{z-index:50}.-mx-1{margin-left:-0.25rem;margin-right:-0.25rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-0\.5{margin-bottom:0.125rem}.mb-1{margin-bottom:0.25rem}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-8{margin-top:2rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-7{height:1.75rem}.h-9{height:2.25rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-7{width:1.75rem}.w-9{width:2.25rem}.w-full{width:100%}.max-w-5xl{max-width:64rem}.border-collapse{border-collapse:collapse}.translate-y-20{--tw-translate-y:5rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.list-decimal{list-style-type:decimal}.list-disc{list-style-type:disc}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-8{gap:2rem}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-16 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(4rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(4rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-slate-200 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(226 232 240 / var(--tw-divide-opacity, 1))}.overflow-x-auto{overflow-x:auto}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-amber-200\/60{border-color:rgb(253 230 138 / 0.6)}.border-amber-200\/80{border-color:rgb(253 230 138 / 0.8)}.border-emerald-100{--tw-border-opacity:1;border-color:rgb(209 250 229 / var(--tw-border-opacity, 1))}.border-emerald-600{--tw-border-opacity:1;border-color:rgb(5 150 105 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-200\/70{border-color:rgb(226 232 240 / 0.7)}.border-slate-200\/80{border-color:rgb(226 232 240 / 0.8)}.border-slate-400{--tw-border-opacity:1;border-color:rgb(148 163 184 / var(--tw-border-opacity, 1))}.bg-amber-50\/60{background-color:rgb(255 251 235 / 0.6)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.bg-emerald-50\/40{background-color:rgb(236 253 245 / 0.4)}.bg-emerald-50\/60{background-color:rgb(236 253 245 / 0.6)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-emerald-700{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-50\/50{background-color:rgb(248 250 252 / 0.5)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.p-1{padding:0.25rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-2{padding-bottom:0.5rem}.pb-6{padding-bottom:1.5rem}.pl-0{padding-left:0px}.pl-4{padding-left:1rem}.pl-5{padding-left:1.25rem}.pt-2{padding-top:0.5rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.text-emerald-200{--tw-text-opacity:1;color:rgb(167 243 208 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.decoration-slate-400{-webkit-text-decoration-color:#94a3b8;text-decoration-color:#94a3b8}.underline-offset-4{text-underline-offset:4px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.focus\:bg-emerald-50:focus{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.dark\:block:is(.dark *){display:block}.dark\:hidden:is(.dark *){display:none}.dark\:divide-slate-700:is(.dark *) > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(51 65 85 / var(--tw-divide-opacity, 1))}.dark\:border-amber-800\/40:is(.dark *){border-color:rgb(146 64 14 / 0.4)}.dark\:border-amber-800\/50:is(.dark *){border-color:rgb(146 64 14 / 0.5)}.dark\:border-emerald-800\/50:is(.dark *){border-color:rgb(6 95 70 / 0.5)}.dark\:border-slate-700:is(.dark *){--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.dark\:border-slate-700\/70:is(.dark *){border-color:rgb(51 65 85 / 0.7)}.dark\:border-slate-700\/80:is(.dark *){border-color:rgb(51 65 85 / 0.8)}.dark\:border-slate-800:is(.dark *){--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.dark\:bg-amber-950\/20:is(.dark *){background-color:rgb(69 26 3 / 0.2)}.dark\:bg-emerald-900:is(.dark *){--tw-bg-opacity:1;background-color:rgb(6 78 59 / var(--tw-bg-opacity, 1))}.dark\:bg-emerald-900\/50:is(.dark *){background-color:rgb(6 78 59 / 0.5)}.dark\:bg-emerald-950\/20:is(.dark *){background-color:rgb(2 44 34 / 0.2)}.dark\:bg-emerald-950\/30:is(.dark *){background-color:rgb(2 44 34 / 0.3)}.dark\:bg-slate-800:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-800\/50:is(.dark *){background-color:rgb(30 41 59 / 0.5)}.dark\:bg-slate-800\/90:is(.dark *){background-color:rgb(30 41 59 / 0.9)}.dark\:bg-slate-900:is(.dark *){--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-900\/40:is(.dark *){background-color:rgb(15 23 42 / 0.4)}.dark\:bg-slate-900\/60:is(.dark *){background-color:rgb(15 23 42 / 0.6)}.dark\:bg-slate-900\/80:is(.dark *){background-color:rgb(15 23 42 / 0.8)}.dark\:text-blue-300:is(.dark *){--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.dark\:text-emerald-200:is(.dark *){--tw-text-opacity:1;color:rgb(167 243 208 / var(--tw-text-opacity, 1))}.dark\:text-emerald-300:is(.dark *){--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.dark\:text-emerald-400:is(.dark *){--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.dark\:text-slate-100:is(.dark *){--tw-text-opacity:1;color:rgb(241 245 249 / var(--tw-text-opacity, 1))}.dark\:text-slate-200:is(.dark *){--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.dark\:text-slate-300:is(.dark *){--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.dark\:text-slate-400:is(.dark *){--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.dark\:text-white:is(.dark *){--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.dark\:hover\:bg-slate-700:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.dark\:hover\:bg-slate-800:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.dark\:focus\:bg-emerald-950\/50:focus:is(.dark *){background-color:rgb(2 44 34 / 0.5)}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:p-10{padding:2.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pl-12{padding-left:3rem}.sm\:pl-2{padding-left:0.5rem}.sm\:text-left{text-align:left}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased">
+
+  <!-- Notifikasi Toast (Pengganti alert) -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 no-print">
+    <div class="bg-emerald-700 text-white px-5 py-3 rounded-xl shadow-lg flex items-center gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle-2" aria-hidden="true" class="lucide lucide-check-circle-2 w-5 h-5 text-emerald-200"><circle cx="12" cy="12" r="10"></circle><path d="m16 9-5.5 5.5L8 12"></path></svg>
+      <span id="toast-message" class="text-sm font-medium">Berhasil diekspor!</span>
+    </div>
+  </div>
+
+  <!-- Navbar / Toolbar Ekspor (Sticky) -->
+  <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 no-print">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand / Title -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-lg bg-emerald-600 flex items-center justify-center text-white shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open-check" aria-hidden="true" class="lucide lucide-book-open-check w-5 h-5"><path d="M12 5v16"></path><path d="m16 12 2 2 4-4"></path><path d="M22 6V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2h4.001A2 2 0 0022 17v-1.344"></path></svg>
+        </div>
+        <div>
+          <h1 class="text-sm font-bold text-slate-900 dark:text-white leading-tight">Modul Ajar PAI</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Pendekatan Pembelajaran Mendalam</p>
+        </div>
+      </div>
+
+      <!-- Tombol Aksi & Ekspor -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <!-- Toggle Dark Mode -->
+        <button onclick="toggleDarkMode()" title="Ubah Tema" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="moon" aria-hidden="true" class="lucide lucide-moon w-4 h-4 dark:hidden"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sun" aria-hidden="true" class="lucide lucide-sun w-4 h-4 hidden dark:block"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+        </button>
+
+        <!-- Dropdown / Group Ekspor -->
+        <div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+          <button onclick="exportToWord()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-700 dark:text-blue-300 hover:bg-white dark:hover:bg-slate-700 transition shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-3.5 h-3.5"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+            <span>Word (.doc)</span>
+          </button>
+          <button onclick="exportToMarkdown()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-code" aria-hidden="true" class="lucide lucide-file-code w-3.5 h-3.5"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 12.5 8 15l2 2.5"></path><path d="m14 12.5 2 2.5-2 2.5"></path></svg>
+            <span>Markdown (.md)</span>
+          </button>
+          <button onclick="copyContent()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-700 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="copy" aria-hidden="true" class="lucide lucide-copy w-3.5 h-3.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+            <span>Salin</span>
+          </button>
+        </div>
+
+        <!-- Tombol Cetak / Simpan PDF -->
+        <button onclick="exportToPDF()" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="printer" aria-hidden="true" class="lucide lucide-printer w-4 h-4"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
+          <span>Cetak / PDF</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Konten Utama Dokumen Modul Ajar -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+    <article id="modul-content" class="print-container bg-white dark:bg-slate-800/90 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-700/80 p-6 sm:p-10 space-y-8">
+      
+      <!-- Header Dokumen -->
+      <div class="border-b-2 border-emerald-600 pb-6 text-center sm:text-left">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 mb-3">
+          KURIKULUM MERDEKA • DEEP LEARNING
+        </span>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          RENCANA PEMBELAJARAN MENDALAM (MODUL AJAR)
+        </h1>
+        <p class="text-base sm:text-lg font-medium text-emerald-700 dark:text-emerald-400 mt-1">
+          Mata Pelajaran: Pendidikan Agama Islam (PAI) dan Budi Pekerti
+        </p>
+      </div>
+
+      <!-- Identitas Umum -->
+      <section class="bg-slate-50 dark:bg-slate-900/60 rounded-xl p-5 border border-slate-200/70 dark:border-slate-700/70">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="info" aria-hidden="true" class="lucide lucide-info w-4 h-4 text-emerald-600"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> Identitas Umum &amp; Administrasi
+          </h2>
+          <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium no-print flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="edit-3" aria-hidden="true" class="lucide lucide-edit-3 w-3 h-3"><path d="M13 21h8"></path><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path></svg> Klik teks untuk mengedit langsung
+          </span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div class="flex flex-col">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">Nama Penyusun / Guru</span>
+            <span contenteditable="true" class="font-semibold text-slate-900 dark:text-white outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">[Isi Nama Lengkap &amp; Gelar Guru, misal RAHMAT, S.Pd.I..]</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">NIP Guru</span>
+            <span contenteditable="true" class="font-semibold text-slate-900 dark:text-white outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">[Isi NIP Guru, misal: 198407072014121003]</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">Nama Sekolah</span>
+            <span contenteditable="true" class="font-semibold text-slate-900 dark:text-white outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">[Isi Nama Sekolah, misal: UPT SMA Negeri 1 Jeneponto]</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">Tahun Pelajaran</span>
+            <span contenteditable="true" class="font-semibold text-slate-900 dark:text-white outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">2026 / 2027</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">Jenjang / Fase / Kelas</span>
+            <span contenteditable="true" class="font-semibold text-slate-900 dark:text-white outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">SMA / Fase F / Kelas XII</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">Alokasi Waktu &amp; Jumlah Pertemuan</span>
+            <span contenteditable="true" class="font-semibold text-slate-900 dark:text-white outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">3 x 45 Menit / 1 Pertemuan</span>
+          </div>
+          <div class="flex flex-col md:col-span-2">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">Topik / Materi Pokok</span>
+            <span contenteditable="true" class="font-semibold text-slate-900 dark:text-white outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">Toleransi dan Menghargai Perbedaan dalam Islam (<em>Tasamuh</em> &amp; <em>Ukhuwah</em>)</span>
+          </div>
+          <div class="flex flex-col md:col-span-2">
+            <span class="text-slate-500 dark:text-slate-400 text-xs">Karakteristik Umum Sekolah/Murid</span>
+            <span contenteditable="true" class="text-slate-700 dark:text-slate-300 leading-relaxed outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 transition">Sekolah menengah atas yang berlokasi di wilayah pesisir dengan akses jaringan internet yang baik. Murid memiliki latar belakang sosial ekonomi dan budaya keluarga yang beragam (nelayan, pedagang, pegawai), mencerminkan masyarakat pesisir yang terbuka namun rentan terhadap gesekan sosial akibat misinformasi di media sosial.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. IDENTIFIKASI -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-2.5 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">1</span>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white">IDENTIFIKASI</h2>
+        </div>
+
+        <div class="space-y-4 pl-0 sm:pl-2 text-sm leading-relaxed">
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-1.5">a. Kesiapan Murid</h3>
+            <ul class="list-disc pl-5 space-y-1.5 text-slate-700 dark:text-slate-300">
+              <li><strong>Pengetahuan Awal:</strong> Sebagian besar murid telah mampu membaca Al-Qur'an dengan lancar dan memahami arti toleransi secara umum di permukaan (sebatas "tidak mengganggu"). Namun, pemahaman mengenai batasan teologis (<em>aqidah</em> vs <em>muamalah</em>) serta konteks historis (<em>Asbabun Nuzul</em>) ayat-ayat toleransi masih dangkal.</li>
+              <li><strong>Profil Gaya Belajar:</strong> Visual-Auditori (45% menyukai konten video pendek dan infografis), Kinestetik (35% menyukai diskusi aktif dan simulasi peran), dan Membaca/Menulis (20% menyukai analisis teks mendalam).</li>
+              <li><strong>Latar Belakang Sosio-Emosional &amp; Spiritual:</strong> Murid berada pada fase pencarian jati diri yang kritis, sangat aktif di media sosial, dan sering terpapar narasi polarisasi/intoleransi digital. Secara spiritual, mereka membutuhkan pendekatan yang rasional dan kontekstual.</li>
+              <li><strong>Strategi Diferensiasi Singkat:</strong>
+                <ul class="list-circle pl-5 mt-1 space-y-1">
+                  <li><em>Diferensiasi Konten:</em> Menyediakan sumber belajar beragam (teks tafsir ringkas, video animasi <em>Asbabun Nuzul</em>, dan infografis hukum toleransi).</li>
+                  <li><em>Diferensiasi Proses:</em> Pendampingan intensif (<em>scaffolding</em>) bagi kelompok murid yang belum lancar membaca/menerjemahkan ayat, sementara kelompok mahir diberi tantangan analisis komparatif tafsir.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-1.5">b. Karakteristik Materi Pelajaran</h3>
+            <ul class="list-disc pl-5 space-y-1.5 text-slate-700 dark:text-slate-300">
+              <li><strong>Jenis Pengetahuan:</strong> <em>Faktual</em> (lafaz, terjemahan, tajwid Q.S. Yunus: 40-41 &amp; Q.S. Al-Hujurat: 13), <em>Konseptual</em> (konsep <em>tasamuh</em>, moderasi beragama, batasan akidah vs muamalah), <em>Prosedural</em> (langkah penyelesaian konflik damai), dan <em>Metakognitif</em> (kesadaran menyaring informasi/<em>tabayyun</em>).</li>
+              <li><strong>Tingkat Abstraksi:</strong> Sedang hingga Tinggi (membutuhkan penalaran batasan teologis agar tidak terjebak pada sikap ekstrem/radikal maupun sinkretisme).</li>
+              <li><strong>Nilai Spiritual/Akhlak:</strong> <em>Tasamuh</em> (tenggang rasa), <em>Ta'aruf</em> (saling mengenal), <em>Adl</em> (adil), <em>Rahmatan lil 'Alamin</em>, dan <em>Tabayyun</em>.</li>
+              <li><strong>Relevansi Kehidupan Nyata:</strong> Sangat relevan dengan masyarakat pesisir yang majemuk serta interaksi murid di ruang digital yang kerap diwarnai ujaran kebencian berbasis SARA.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-1.5">c. Dimensi Profil Lulusan</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-2">
+              <div class="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-800/50">
+                <h4 class="font-bold text-slate-900 dark:text-white mb-1">1. Keimanan &amp; Ketakwaan</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Menghayati bahwa menghargai perbedaan adalah perintah Allah Swt. dan wujud akhlak Rasulullah saw. tanpa mengorbankan akidah.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-800/50">
+                <h4 class="font-bold text-slate-900 dark:text-white mb-1">2. Kewargaan</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Merawat harmoni sosial di tengah keberagaman budaya/agama masyarakat pesisir serta menjadi warga digital yang santun.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-800/50">
+                <h4 class="font-bold text-slate-900 dark:text-white mb-1">3. Penalaran Kritis</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Menganalisis studi kasus konflik intoleransi, membedakan fakta dan hoaks keagamaan, serta merumuskan solusi berbasis dalil sahih.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. DESAIN PEMBELAJARAN -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-2.5 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">2</span>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white">DESAIN PEMBELAJARAN</h2>
+        </div>
+
+        <div class="space-y-4 pl-0 sm:pl-2 text-sm leading-relaxed">
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-1.5">a. Tujuan Pembelajaran (TP)</h3>
+            <p class="text-slate-700 dark:text-slate-300 mb-2">Melalui model pembelajaran berbasis masalah (<em>Problem-Based Learning</em>), murid mampu:</p>
+            <ol class="list-decimal pl-5 space-y-1.5 text-slate-700 dark:text-slate-300">
+              <li><strong>Menganalisis (C4)</strong> makna, hukum bacaan, dan <em>Asbabun Nuzul</em> Q.S. Yunus/10: 40-41 serta Q.S. Al-Hujurat/49: 13 secara kritis untuk merumuskan konsep dan batasan toleransi dalam Islam.</li>
+              <li><strong>Mengevaluasi (C5)</strong> berbagai fenomena intoleransi di masyarakat dan media sosial berdasarkan prinsip moderasi beragama (<em>wasathiyah</em>) dengan penuh kesadaran spiritual.</li>
+              <li><strong>Merancang (C6/A5)</strong> solusi aksi nyata berupa kampanye digital atau simulasi resolusi konflik yang mencerminkan perilaku toleran, adil, dan menjunjung tinggi persaudaraan kemanusiaan (<em>ukhuwah insaniyah</em>).</li>
+            </ol>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-1.5">b. Kerangka Pembelajaran</h3>
+            <ul class="list-disc pl-5 space-y-1.5 text-slate-700 dark:text-slate-300">
+              <li><strong>Praktik Pedagogis:</strong> <em>Problem-Based Learning</em> (PBL) dipadukan dengan teknik <em>Jigsaw</em> untuk analisis ayat dan diskusi studi kasus.</li>
+              <li><strong>Kemitraan Pembelajaran:</strong> Kolaborasi lintas mapel dengan guru Sosiologi/PPKn (analisis konflik multikultural) serta pelibatan tokoh masyarakat/agama pesisir melalui rekaman wawancara singkat tentang tradisi kerukunan warga.</li>
+              <li><strong>Lingkungan Pembelajaran:</strong> Pengaturan tempat duduk <em>U-Shape</em> atau kelompok melingkar (4-5 orang) dengan iklim psikologis yang aman (<em>psychologically safe</em>) agar murid bebas berdialog tanpa takut dihakimi.</li>
+              <li><strong>Pemanfaatan Digital:</strong> Aplikasi <em>Qur'an Kemenag</em> (audio murottal &amp; tafsir), <em>Padlet</em> (papan kolaborasi &amp; <em>peer feedback</em>), dan <em>Canva</em> (desain kampanye digital).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PENGALAMAN BELAJAR -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-2.5 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">3</span>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white">PENGALAMAN BELAJAR</h2>
+        </div>
+
+        <div class="space-y-4 pl-0 sm:pl-2 text-sm leading-relaxed">
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-2">a. Prinsip Pembelajaran</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50">
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 block mb-1">Berkesadaran (Mindful)</span>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Diawali teknik <em>STOP</em> dan <em>tadabbur</em> lantunan Q.S. Al-Hujurat: 13 agar murid hadir utuh dan mensyukuri keberagaman sebagai sunnatullah.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50">
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 block mb-1">Bermakna (Meaningful)</span>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Menghubungkan dalil secara langsung dengan fenomena polarisasi kolom komentar media sosial dan dinamika warga pesisir.</p>
+              </div>
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50">
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 block mb-1">Menggembirakan (Joyful)</span>
+                <p class="text-xs text-slate-600 dark:text-slate-300">Pembagian peran aktif dalam kelompok (<em>detektif dalil</em>, <em>analis kasus</em>, <em>desainer solusi</em>) serta apresiasi karya digital tanpa tekanan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-2">b. Tahapan Pengalaman Belajar (135 Menit)</h3>
+            
+            <div class="space-y-3">
+              <!-- Pendahuluan -->
+              <div class="p-4 rounded-xl border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-900/40">
+                <h4 class="font-bold text-slate-900 dark:text-white mb-1">1. Kegiatan Pendahuluan (20 Menit)</h4>
+                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                  <li><strong>Orientasi &amp; Mindful Opening (7'):</strong> Salam, doa, teknik hening <em>mindful breathing</em> (1 menit) diiringi murottal Q.S. Al-Hujurat: 13, dilanjutkan pertanyaan pemantik emosional.</li>
+                  <li><strong>Apersepsi Bermakna (8'):</strong> Menampilkan gambar kontras gotong-royong warga pesisir vs komentar SARA di medsos; murid merespons satu kata di <em>Padlet</em>.</li>
+                  <li><strong>Tujuan &amp; Asesmen Awal (5'):</strong> Menyampaikan tujuan belajar dan kuis diagnostik singkat via kartu respons cepat.</li>
+                </ul>
+              </div>
+
+              <!-- Inti -->
+              <div class="p-4 rounded-xl border-l-4 border-emerald-600 bg-emerald-50/40 dark:bg-emerald-950/20 space-y-3">
+                <h4 class="font-bold text-slate-900 dark:text-white">2. Kegiatan Inti (95 Menit)</h4>
+                
+                <div>
+                  <span class="inline-block px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs font-bold mb-1">Tahap 1: Memahami (Understanding) – 35 Menit</span>
+                  <p class="text-slate-700 dark:text-slate-300">Murid dibagi 5 kelompok heterogen menerima "Kasus Dilema Toleransi". Menggunakan aplikasi <em>Qur'an Kemenag</em> dan bahan bacaan berdiferensiasi, murid menganalisis tajwid dan makna Q.S. Yunus: 40-41 &amp; Q.S. Al-Hujurat: 13 untuk merumuskan batas tegas antara akidah dan muamalah.</p>
+                </div>
+
+                <div>
+                  <span class="inline-block px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs font-bold mb-1">Tahap 2: Mengaplikasi (Applying) – 40 Menit</span>
+                  <p class="text-slate-700 dark:text-slate-300">Kelompok membedah kasus dilema (akar masalah, dalil, solusi Islami) dan merancang produk <strong>Kampanye Digital Moderat</strong> di <em>Canva</em> (poster/infografis carousel). Karya diunggah ke <em>Padlet</em> untuk sesi <em>Gallery Walk</em> dan umpan balik teman sebaya.</p>
+                </div>
+
+                <div>
+                  <span class="inline-block px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs font-bold mb-1">Tahap 3: Merefleksi (Reflecting) – 20 Menit</span>
+                  <p class="text-slate-700 dark:text-slate-300">Diskusi evaluasi prinsip pemaksaan vs keteguhan iman, dilanjutkan sesi <strong>Muhasabah Spiritual</strong> (menundukkan kepala sejenak mengevaluasi interaksi digital selama ini) dan menuliskan "Komitmen Aksi Toleransi" selama 1 pekan.</p>
+                </div>
+              </div>
+
+              <!-- Penutup -->
+              <div class="p-4 rounded-xl border-l-4 border-slate-400 bg-slate-50 dark:bg-slate-900/40">
+                <h4 class="font-bold text-slate-900 dark:text-white mb-1">3. Kegiatan Penutup (20 Menit)</h4>
+                <ul class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
+                  <li><strong>Penguatan (8'):</strong> Penegasan pesan kunci <em>rahmatan lil 'alamin</em>: teguh dalam akidah, lembut dalam muamalah.</li>
+                  <li><strong>Asesmen Sumatif Singkat (8'):</strong> Mengerjakan 1 soal studi kasus HOTS tertulis secara individu.</li>
+                  <li><strong>Tindak Lanjut &amp; Doa (4'):</strong> Penugasan observasi kerukunan warga di lingkungan pesisir dan doa <em>Kafaratul Majelis</em>.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. ASESMEN PEMBELAJARAN -->
+      <section class="space-y-4">
+        <div class="flex items-center gap-2.5 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white font-bold text-sm flex items-center justify-center">4</span>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white">ASESMEN PEMBELAJARAN</h2>
+        </div>
+
+        <div class="space-y-5 pl-0 sm:pl-2 text-sm leading-relaxed">
+          <!-- a. Awal -->
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-1.5">a. Asesmen pada Awal Pembelajaran (Assessment for Learning)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700">
+                <p class="font-semibold text-slate-900 dark:text-white mb-1">Instrumen Non-Kognitif:</p>
+                <ol class="list-decimal pl-4 text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                  <li>Perasaan saat bekerja kelompok dengan teman berbeda latar belakang budaya/pemahaman agama.</li>
+                  <li>Preferensi gaya belajar materi agama hari ini (tafsir / video / studi kasus).</li>
+                </ol>
+              </div>
+              <div class="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700">
+                <p class="font-semibold text-slate-900 dark:text-white mb-1">Instrumen Kognitif:</p>
+                <ol class="list-decimal pl-4 text-xs space-y-1 text-slate-600 dark:text-slate-300">
+                  <li>Hukum berteman akrab dan membantu tetangga berbeda agama dalam Islam beserta alasannya.</li>
+                  <li>Makna potongan ayat <em>"Lakum dinukum waliyadin"</em> dalam konteks bermasyarakat.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- b. Proses -->
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-2">b. Asesmen pada Proses Pembelajaran (Rubrik Karya Digital)</h3>
+            <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700">
+                    <th class="p-3 font-bold">Kriteria</th>
+                    <th class="p-3 font-bold">Mahir (4)</th>
+                    <th class="p-3 font-bold">Cakap (3)</th>
+                    <th class="p-3 font-bold">Berkembang (2)</th>
+                    <th class="p-3 font-bold">Perlu Bimbingan (1)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
+                  <tr>
+                    <td class="p-3 font-semibold">Ketepatan Analisis Dalil</td>
+                    <td class="p-3">Mengaitkan ayat dengan tepat &amp; membedakan batas akidah-muamalah secara logis.</td>
+                    <td class="p-3">Mengaitkan ayat dengan tepat, namun batasan toleransi masih umum.</td>
+                    <td class="p-3">Menyebutkan arti ayat, tetapi belum tepat mengaitkan dengan kasus.</td>
+                    <td class="p-3">Belum memahami makna ayat &amp; mencampuradukkan akidah-muamalah.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold">Kedalaman Solusi Kasus</td>
+                    <td class="p-3">Solusi sangat kontekstual, damai, solutif, dan berempati tinggi.</td>
+                    <td class="p-3">Solusi cukup relevan dan mencerminkan sikap toleran Islami.</td>
+                    <td class="p-3">Solusi masih normatif tanpa langkah nyata.</td>
+                    <td class="p-3">Solusi cenderung menghakimi atau memicu konflik.</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold">Etika &amp; Kreativitas Digital</td>
+                    <td class="p-3">Desain menarik, persuasif, santun, dan bebas unsur provokasi.</td>
+                    <td class="p-3">Desain rapi, mudah dipahami, dan diksi santun.</td>
+                    <td class="p-3">Desain sederhana, pesan kurang fokus, bahasa sopan.</td>
+                    <td class="p-3">Karya belum selesai atau bahasa kurang empatik.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 italic">*Peer Feedback di Padlet menggunakan format <strong>2 Bintang &amp; 1 Harapan</strong>.</p>
+          </div>
+
+          <!-- c. Akhir -->
+          <div>
+            <h3 class="font-bold text-base text-emerald-700 dark:text-emerald-400 mb-2">c. Asesmen pada Akhir Pembelajaran (Assessment of Learning)</h3>
+            <div class="p-4 rounded-xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-800/50 space-y-2">
+              <p class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider">Soal Studi Kasus HOTS (Individu)</p>
+              <p class="text-slate-700 dark:text-slate-300 italic">"Di sebuah desa pesisir yang majemuk, panitia festival tradisi bahari mengusulkan pembukaan acara dengan doa bersama secara bergantian menurut agama masing-masing di satu panggung. Sebagian pemuda muslim menolak keras hingga memboikot acara, sementara sebagian lainnya setuju tanpa batasan apa pun demi kerukunan."</p>
+              <p class="font-semibold text-slate-900 dark:text-white">Pertanyaan: Analisislah kedua sikap ekstrem tersebut berdasarkan Q.S. Yunus: 40-41 dan Q.S. Al-Hujurat: 13, lalu rumuskan jalan tengah (<em>wasathiyah</em>) yang bijak agar kerukunan warga terjaga tanpa merusak prinsip akidah!</p>
+              <div class="pt-2 border-t border-amber-200/60 dark:border-amber-800/40 text-xs text-slate-600 dark:text-slate-400">
+                <strong>Pedoman Skor (Max 100):</strong> Kritik sikap boikot merusak <em>ukhuwah</em> (30) + Kritik sikap sinkretisme ritual (30) + Rumusan solusi jalan tengah partisipasi sosial tanpa mencampur ritual ibadah (40).
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kolom Pengesahan Kepala Sekolah & Guru -->
+      <section class="pt-8 mt-8 border-t border-slate-200 dark:border-slate-700 text-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-slate-800 dark:text-slate-200">
+          <!-- Kolom Kiri: Kepala Sekolah -->
+          <div class="flex flex-col justify-between space-y-16">
+            <div>
+              <p class="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider mb-0.5">Mengetahui,</p>
+              <p class="font-semibold">Kepala Sekolah</p>
+            </div>
+            <div>
+              <p contenteditable="true" class="font-bold underline decoration-slate-400 underline-offset-4 outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1">[Nama Kepala Sekolah, M.Pd.]</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">NIP. <span contenteditable="true" class="outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1">[19750817 200003 1 004]</span></p>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Guru Mata Pelajaran -->
+          <div class="flex flex-col justify-between space-y-16 sm:pl-12">
+            <div>
+              <p contenteditable="true" class="text-slate-700 dark:text-slate-300 outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1 mb-0.5">[Kota, 22 November 2026]</p>
+              <p class="font-semibold">Guru Mata Pelajaran PAI &amp; BP</p>
+            </div>
+            <div>
+              <p contenteditable="true" class="font-bold underline decoration-slate-400 underline-offset-4 outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1 -mx-1">[RAHMAT, S.Pd.I.]</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">NIP. <span contenteditable="true" class="outline-none focus:bg-emerald-50 dark:focus:bg-emerald-950/50 rounded px-1">[198407072014121003]</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- Script Logika Ekspor & Interaktivitas -->
+  <script>
+    // Inisialisasi ikon Lucide
+    lucide.createIcons();
+
+    // Fungsi menampilkan notifikasi toast
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Toggle Dark Mode
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    // 1. Ekspor ke PDF / Cetak Browser
+    function exportToPDF() {
+      showToast('Membuka dialog cetak / simpan PDF...');
+      setTimeout(() => {
+        window.print();
+      }, 400);
+    }
+
+    // 2. Ekspor ke Microsoft Word (.doc)
+    function exportToWord() {
+      try {
+        const content = document.getElementById('modul-content').innerHTML;
+        const header = `
+          <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                xmlns:w='urn:schemas-microsoft-com:office:word' 
+                xmlns='http://www.w3.org/TR/REC-html40'>
+          <head>
+            <meta charset='utf-8'>
+            <title>Modul Ajar PAI</title>
+            <style>
+              body { font-family: 'Calibri', 'Arial', sans-serif; font-size: 11pt; line-height: 1.5; color: #1e293b; }
+              h1 { font-size: 16pt; color: #065f46; text-align: center; }
+              h2 { font-size: 13pt; color: #047857; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; margin-top: 16px; }
+              h3 { font-size: 11.5pt; color: #059669; margin-top: 12px; }
+              table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+              th, td { border: 1px solid #94a3b8; padding: 6px; text-align: left; font-size: 10pt; }
+              th { background-color: #f1f5f9; font-weight: bold; }
+            </style>
+          </head>
+          <body>
+        `;
+        const footer = "</body></html>";
+        const sourceHTML = header + content + footer;
+        
+        const blob = new Blob(['\ufeff', sourceHTML], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Modul_Ajar_PAI_Toleransi_Kelas_XII.doc';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        showToast('File Word (.doc) berhasil diunduh!');
+      } catch (error) {
+        console.error('Gagal mengekspor ke Word:', error);
+        showToast('Terjadi kesalahan saat mengunduh file Word.');
+      }
+    }
+
+    // 3. Ekspor ke Markdown (.md)
+    function exportToMarkdown() {
+      try {
+        const mdContent = `# RENCANA PEMBELAJARAN MENDALAM (MODUL AJAR)
+**Mata Pelajaran:** Pendidikan Agama Islam (PAI) dan Budi Pekerti
+
+### IDENTITAS UMUM & ADMINISTRASI
+* **Nama Penyusun / Guru:** [Isi Nama Lengkap & Gelar Guru]
+* **NIP Guru:** [Isi NIP Guru]
+* **Nama Sekolah:** [Isi Nama Sekolah]
+* **Tahun Pelajaran:** 2026 / 2027
+* **Jenjang / Fase / Kelas:** SMA / Fase F / Kelas XII
+* **Topik / Materi Pokok:** Toleransi dan Menghargai Perbedaan dalam Islam (Tasamuh & Ukhuwah)
+* **Alokasi Waktu:** 3 x 45 Menit
+* **Jumlah Pertemuan:** 1 Pertemuan
+* **Karakteristik Umum Sekolah/Murid:** Sekolah menengah atas di wilayah pesisir dengan akses jaringan internet baik dan latar belakang keluarga beragam.
+
+---
+
+### 1. IDENTIFIKASI
+* **a. Kesiapan Murid:** Pemahaman awal toleransi masih di permukaan; gaya belajar bervariasi (45% Visual-Auditori, 35% Kinestetik, 20% Membaca/Menulis); aktif di media sosial. Strategi diferensiasi melalui variasi sumber belajar dan scaffolding.
+* **b. Karakteristik Materi Pelajaran:** Mencakup pengetahuan faktual (Q.S. Yunus: 40-41 & Q.S. Al-Hujurat: 13), konseptual (tasamuh & wasathiyah), prosedural (resolusi konflik), dan metakognitif (tabayyun).
+* **c. Dimensi Profil Lulusan:** Keimanan dan Ketakwaan kepada Tuhan YME, Kewargaan, dan Penalaran Kritis.
+
+### 2. DESAIN PEMBELAJARAN
+* **a. Tujuan Pembelajaran:** Menganalisis dalil (C4), mengevaluasi fenomena intoleransi (C5), dan merancang kampanye digital moderat (C6/A5).
+* **b. Kerangka Pembelajaran:** Problem-Based Learning (PBL) + Jigsaw, kolaborasi lintas mapel Sosiologi/PPKn, ruang kelas U-Shape, serta pemanfaatan Qur'an Kemenag, Padlet, dan Canva.
+
+### 3. PENGALAMAN BELAJAR
+* **a. Prinsip Pembelajaran:** Berkesadaran (Mindful STOP & tadabbur), Bermakna (Meaningful studi kasus nyata), Menggembirakan (Joyful peran kelompok & kreasi digital).
+* **b. Langkah Kegiatan:** Pendahuluan (20'), Inti: Memahami (35'), Mengaplikasi (40'), Merefleksi (20'), Penutup (20').
+
+### 4. ASESMEN PEMBELAJARAN
+* **a. Awal:** Diagnostik kognitif & non-kognitif.
+* **b. Proses:** Rubrik penilaian produk kampanye digital & peer feedback (2 Bintang & 1 Harapan).
+* **c. Akhir:** Soal studi kasus HOTS festival tradisi bahari pesisir & jurnal muhasabah diri.
+
+---
+
+### LEMBAR PENGESAHAN
+* **Kota & Tanggal Pengesahan:** [Kota, 22 November 2026]
+* **Kepala Sekolah:** [Nama Kepala Sekolah] (NIP. [NIP Kepala Sekolah])
+* **Guru Mata Pelajaran:** [Nama Penyusun / Guru] (NIP. [NIP Guru])`;
+
+        const blob = new Blob([mdContent], { type: 'text/markdown;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Modul_Ajar_PAI_Deep_Learning.md';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        showToast('File Markdown (.md) berhasil diunduh!');
+      } catch (error) {
+        console.error('Gagal mengekspor Markdown:', error);
+        showToast('Gagal mengunduh file Markdown.');
+      }
+    }
+
+    // 4. Salin Teks ke Clipboard
+    function copyContent() {
+      const text = document.getElementById('modul-content').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Seluruh isi modul berhasil disalin ke clipboard!');
+      }).catch(() => {
+        showToast('Gagal menyalin teks.');
+      });
+    }
+  </script>
+
+</body></html>
